@@ -1,23 +1,21 @@
 package guru.springframework.sfgdi.controllers;
 
-import guru.springframework.sfgdi.services.GreedingServiceImpl;
+import guru.springframework.sfgdi.services.PropertyGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SetterInjectedControllerTest {
  SetterInjectedController setterInjectedController;
     @BeforeEach
     void setUp() {
         setterInjectedController = new SetterInjectedController();
-        setterInjectedController.setGreedingService(new GreedingServiceImpl());
+        setterInjectedController.setGreetingService(new PropertyGreetingService());
 
 
     }
 
     @Test
-    void getGreeding() {
-        System.out.println(setterInjectedController.getGreeding());
+    void getGreeting() {
+        System.out.println(setterInjectedController.getGreeting());
     }
 }
