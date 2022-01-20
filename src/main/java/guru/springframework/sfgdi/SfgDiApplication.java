@@ -2,14 +2,18 @@ package guru.springframework.sfgdi;
 
 import com.springframework.scope.PrototypeBean;
 import com.springframework.scope.SingletonBean;
+import guru.springframework.sfgdi.config.SFGConfig;
+import guru.springframework.sfgdi.config.SFGConstructorConfig;
 import guru.springframework.sfgdi.controllers.*;
 import guru.springframework.sfgdi.fakeDB.FakeDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
+@EnableConfigurationProperties(SFGConstructorConfig.class)
 @ComponentScan(basePackages = {"guru.springframework.sfgdi","com.springframework"})
 @ImportResource("classpath:sfgdi-config.xml")
 //@PropertySource("classpath:dataSourceProperties.txt")
@@ -63,6 +67,21 @@ public class SfgDiApplication {
 		System.out.println(fakeDataSource.getUserName());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcUrl());
+
+		System.out.println("--------- Config Props Bean");
+		SFGConfig sfgConfiguration = ctx.getBean(SFGConfig.class);
+		System.out.println(sfgConfiguration.getUserName());
+		System.out.println(sfgConfiguration.getPassword());
+		System.out.println(sfgConfiguration.getJdbcUrl());
+
+		System.out.println("--------- Config Constructor Properties Bean");
+		SFGConstructorConfig sfgConstructorConfig = ctx.getBean(SFGConstructorConfig.class);
+		System.out.println(sfgConstructorConfig.getUserName());
+		System.out.println(sfgConstructorConfig.getPassword());
+		System.out.println(sfgConstructorConfig.getJdbcUrl());
+
+
+		System.out.println("--------- End of the business logic");
 
 
 

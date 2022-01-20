@@ -15,17 +15,7 @@ import org.springframework.stereotype.Service;
 public class GreetingServiceI18nServiceConfiguration {
 
 
-    @Bean
-    FakeDataSource fakeDataSource(@Value("${fake.userName}") String userName,
-                                  @Value("${fake.password}") String password,
-                                  @Value("${fake.jdbcUrl}") String jdbcUrl){
-        FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUserName(userName);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcUrl(jdbcUrl);
-        return fakeDataSource;
 
-    }
 
     @Bean
     GreetingRepository greetingRepository(){
