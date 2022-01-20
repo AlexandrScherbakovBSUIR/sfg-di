@@ -1,0 +1,2 @@
+fake.userName="Faker"
+fake.password="pass word!"
